@@ -7,8 +7,9 @@ const connect = function () {
     
     conn.setEncoding("utf8");
     conn.on("connect", () => {
-    console.log("you are dead!")
-    conn.write("Hello from client")
+
+        conn.write('Name: PRI');
+        conn.write('Say: Hi');
   })
   return conn;
 };
