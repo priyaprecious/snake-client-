@@ -1,20 +1,40 @@
-const net = require("net");
-const client = require('./client');
+const net = require('net');
+const {IP, PORT} = require('./constants');
+
 
 // establishes a connection with the game server
-// const connect = function () {
-//   const conn = net.createConnection({
-//     host: "localhost",// IP address here,
-//     port: 50541 // PORT number here,
-//   });
-  // interpret incoming data as text
-//   conn.setEncoding("utf8");
-//   conn.on("connect", () => {
-//     console.log("you are dead!")
-//     conn.write("Hello from client")
-//   })
-//   return conn;
-// };
+const connect = function () {
+  const conn = net.createConnection({
+    // host: "192.168.0.38", // IP address here,
+    // port: 50541// PORT number here,
+    host: IP, // IP address here,
+    port: PORT// PORT number here,
+    
+  });
+  
+  conn.setEncoding("utf8");
+  console.log("hello Priyanka welcome to the game!");
 
-//console.log("Connecting ...");
-client.connect();
+  conn.on('connect', () => {
+    
+    conn.write('Name: PRI');
+    conn.write('Say: Hi');
+    // conn.write('Move: up'); 
+    // conn.write('Move: left');
+    // conn.write('Move: down');
+    // conn.write('Move: right');
+    //setTimeout(() => {conn.write('Move: up');}, 500);   
+    //setTimeout(() => {conn.write('Move: left');}, 500);   
+    //setTimeout(() => {conn.write('Move: down');}, 500);   
+    //setTimeout(() => {conn.write('Move: right');}, 500);  
+    
+    //setInterval(() => {conn.write('Move: up');}, 500); 
+    //setInterval(() => {conn.write('Move: left');}, 500); 
+    //setInterval(() => {conn.write('Move: down');}, 500); 
+    //setInterval(() => {conn.write('Move: right');}, 500); 
+  })
+  // interpret incoming data as text
+  return conn;
+};
+
+module.exports = connect;
